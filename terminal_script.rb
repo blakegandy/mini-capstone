@@ -16,4 +16,8 @@ elsif input == "2"
   puts response
 
 elsif input = "3"
+  response = HTTP.patch("http://localhost:3000/api/products/2").parse
+
+elsif input = "4"
+  response = HTTP.delete("http://localhost:3000/api/products/2")
 end
