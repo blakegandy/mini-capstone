@@ -32,21 +32,34 @@ class Api::ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       image_path: params[:image_path],
-      description: params[:description]
+      description: params[:description],
+      stock: params[:stock]
     )
-    @product.save
-    render "show.json.jb"
+    if @product.save
+      render "show.json.jb"
+    else
+      render json: {errors: @product.errors.full_messages}
+    end
   end
 
   def update
     @product = Product.find(params[:id])
-    
+
     @product.name = params[:name] || @product.name
+
     @product.price = params[:price] || @product.price
+
     @product.image_path = params[:image_path] || @product.image_path
+
     @product.description = params[:description] || @product/description
-    @product.save
-    render "show.json.jb"
+
+    @product.stock = params[:stock]
+
+    if @product.save
+      render "show.json.jb"
+    else
+      render json: {errors: @product.errors.full_messages}
+    end
   end
 
   def destroy

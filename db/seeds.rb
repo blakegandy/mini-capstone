@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Product.create(name: "banana", price: 0.50, image_path: "filler", description: "A ripe banana")
+Product.create(name: "banana", price: 0.50, image_path: "filler", description: "A ripe banana", stock: 25)
 
-Product.create(name: "Tide pods", price: 18, image_path: "filler", description: "Laundry detergent vessel")
+Product.create(name: "Tide pods", price: 18, image_path: "filler", description: "Laundry detergent vessel", stock: 17)
 
-Product.create(name: "Xbox", price: 100, image_path: "filler", description: "home gaming system")
+Product.create(name: "Xbox", price: 100, image_path: "filler", description: "home gaming system", stock: 7)
 
-Product.create(name: "Hair Brush", price: 2, image_path: "filler", description: "Hair detangling tool")
+Product.create(name: "Hair Brush", price: 2, image_path: "filler", description: "Hair detangling tool", stock: 45)
 
-Product.create(name: "Dog Toy", price: 4, image_path: "filler", description: "durable squeaky toy for dogs")
+Product.create(name: "Dog Toy", price: 4, image_path: "filler", description: "durable squeaky toy for dogs", stock: 32)
