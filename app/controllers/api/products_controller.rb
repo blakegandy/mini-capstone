@@ -1,41 +1,24 @@
 class Api::ProductsController < ApplicationController
-  # def product_action
-  #   @selection = params[:name]
-  #   @product = Product.find_by(name: @selection)
-  #   render "show.json.jb"
-  # end
 
-  # def product_url_action
-  #   @selection = params[:name]
-  #   @product = Product.find_by(name: @selection)
-  #   render "show.json.jb"
-  # end
-
-  # def all_products_action
-  #   @products = Product.all
-  #   render "index.json.jb"
-  # end
+  before_action :authenticate_admin, except: [:index, :show]
 
   def index
     @products = Product.all
     if params[:search]
       @products = @products.where("name iLIKE?", "%#{params[:search]}%")
     end
-
     if params[:sort] == "price"
       @products = @products.order(:price)
     end
     render "index.json.jb"
-
-    # if params[:sort] == "price" && params[:sort_order] == "desc"
-    #   @products = @products.order(price: :asc)
-    # end
-    
+    if params[:sort] == "price" && params[:sort_order] == "desc"
+      @products = @products.order(price: :asc)
+    end 
   end
 
   def show
-    @product = Product.find(params[:id])
-    render "show.json.jb"
+      @product = Product.find(params[:id])
+      render "show.json.jb"
   end
 
   def create
@@ -44,7 +27,8 @@ class Api::ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      stock: params[:stock]
+      stock: params[:stock],
+      supplier_id: params[:supplier_id]
     )
     if @product.save
       render "show.json.jb"

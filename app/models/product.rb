@@ -2,11 +2,12 @@ class Product < ApplicationRecord
   
   validates :name, uniqueness: true
   validates :description, length: {in: 10..200}
-  # validates :image_path, presence: true
   validates :price, presence: true, numericality: {greater_than: 0}
   validates :stock, numericality: {greater_than: 0}
 
-  has_many :image
+  has_many :images
+
+  has_many :orders
 
   belongs_to :supplier
   

@@ -7,5 +7,5 @@
   item_tax: product.tax,
   item_total: product.total,
   supplier_info: product.supplier,
-  all_images: product.image
+  images: product.images
 }
