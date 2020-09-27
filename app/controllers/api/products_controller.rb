@@ -13,6 +13,11 @@ class Api::ProductsController < ApplicationController
     render "index.json.jb"
     if params[:sort] == "price" && params[:sort_order] == "desc"
       @products = @products.order(price: :asc)
+
+      if params[:category]
+        category = Category.find_by(name: params[:category])
+        @products = category.products
+      end
     end 
   end
 
