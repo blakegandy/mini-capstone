@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  get "/products" => "products#index"
+  get "/products/new" => "products#new"
+  post "/products" => "products#create"
+  get "/products/:id" => "products#show"
+  get "/products/:id/edit" => "products#edit"
+  patch "/products/:id" => "products#update"
+
   namespace :api do
     # get "/product_path" => "products#product_action"
     # get "/product_url_path/:name" => "products#product_url_action"

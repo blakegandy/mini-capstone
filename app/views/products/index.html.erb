@@ -1,0 +1,8 @@
+<% @products.map do |product| %>
+<h2><%= product.name %></h1>
+<h4>Price:<%= product.price%></h4>
+<h4>Description:<%= product.description%></h4> 
+<h6>Discount:<%= product.is_discounted?%></h6> 
+<h6>Tax:<%= product.tax%></h6>
+<h6>Total:<%= product.total%></h6>    
+<%end%>
